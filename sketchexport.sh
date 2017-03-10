@@ -1,5 +1,5 @@
 #!/bin/sh
- 
+
 echo "Hello, world!"
 
 rm -r export
@@ -13,12 +13,12 @@ mkdir -p ../../../Droid/Resources/drawable-mdpi
 mkdir -p ../../../iOS/Resources/Images/@1x
 for file in *.png
 do
-  mv "$file" "${file//@0.5x/}"
+mv "$file" "${file//@0.5x/}"
 done
 for file in *.png
 do
-  cp "${file}" "../../../Droid/Resources/drawable-mdpi/${file}"
-  cp "${file}" "../../../iOS/Resources/Images/@1x/${file}"
+cp "${file}" "../../../Droid/Resources/drawable-mdpi/${file}"
+cp "${file}" "../../../iOS/Resources/Images/@1x/${file}"
 done
 cd ../..
 
@@ -32,8 +32,8 @@ mkdir -p ../../../Droid/Resources/drawable-xhdpi
 mkdir -p ../../../iOS/Resources/Images/@2x
 for file in *.png
 do
-  cp "${file}" "../../../Droid/Resources/drawable-xhdpi/${file}"
-  cp "${file}" "../../../iOS/Resources/Images/@2x/${file}"
+cp "${file}" "../../../Droid/Resources/drawable-xhdpi/${file}"
+cp "${file}" "../../../iOS/Resources/Images/@2x/${file}"
 done
 cd ../..
 
@@ -46,12 +46,12 @@ mkdir -p ../../../Droid/Resources/drawable-xxhdpi
 mkdir -p ../../../iOS/Resources/Images/@3x
 for file in *.png
 do
-  mv "$file" "${file//@1.5x/}"
+mv "$file" "${file//@1x/}"
 done
 for file in *.png
 do
-  cp "${file}" "../../../Droid/Resources/drawable-xxhdpi/${file}"
-  cp "${file}" "../../../iOS/Resources/Images/@3x/${file}"
+cp "${file}" "../../../Droid/Resources/drawable-xxhdpi/${file}"
+cp "${file}" "../../../iOS/Resources/Images/@3x/${file}"
 done
 cd ../..
 
@@ -63,26 +63,31 @@ cd export/4x
 mkdir -p ../../../Droid/Resources/drawable-xxxhdpi
 for file in *.png
 do
-  mv "$file" "${file//@2x/}"
+mv "$file" "${file//@2x/}"
 done
 for file in *.png
 do
-  cp "${file}" "../../../Droid/Resources/drawable-xxxhdpi/${file}"
+cp "${file}" "../../../Droid/Resources/drawable-xxxhdpi/${file}"
 done
 cd ../..
 
 
 ###################################
-###  1.5X (use 50% of our exported 3x) 
+###  1.5X (use 50% of our exported 3x)
 ###################################
 cd export/3x
 mkdir -p ../android/hdpi
 for file in *.png
 do
-  cp "${file}" "../android/hdpi/${file}"
+cp "${file}" "../android/hdpi/${file}"
 done
 cd ../android/hdpi
 mogrify -verbose -resize 50% *.png
+mkdir -p ../../../../Droid/Resources/drawable-hdpi
+for file in *.png
+do
+cp "${file}" "../../../../Droid/Resources/drawable-hdpi/${file}"
+done
 cd ../..
 
 
