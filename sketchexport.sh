@@ -7,18 +7,18 @@ mkdir export
 ###################################
 ###  1X
 ###################################
-sketchtool export slices Create_Match.sketch --output="export/1x" --scales="0.5"
+sketchtool export slices $1 --output="export/1x" --scales="0.5"
 cd export/1x
-mkdir -p ../android/mdpi
-mkdir -p ../iphone/@1x
+mkdir -p ../../../Droid/Resources/drawable-mdpi
+mkdir -p ../../../iOS/Resources/Images/@1x
 for file in *.png
 do
   mv "$file" "${file//@0.5x/}"
 done
 for file in *.png
 do
-  cp "${file}" "../android/mdpi/${file}"
-  cp "${file}" "../iphone/@1x/${file}"
+  cp "${file}" "../../../Droid/Resources/drawable-mdpi/${file}"
+  cp "${file}" "../../../iOS/Resources/Images/@1x/${file}"
 done
 cd ../..
 
@@ -26,48 +26,48 @@ cd ../..
 ###################################
 ###  2X
 ###################################
-sketchtool export slices Create_Match.sketch --output="export/2x" --scales="1"
+sketchtool export slices $1 --output="export/2x" --scales="1"
 cd export/2x
-mkdir -p ../android/xhdpi
-mkdir -p ../iphone/@2x
+mkdir -p ../../../Droid/Resources/drawable-xhdpi
+mkdir -p ../../../iOS/Resources/Images/@2x
 for file in *.png
 do
-  cp "${file}" "../android/xhdpi/${file/@2x.png/-xhdpi.png}"
-  cp "${file}" "../iphone/@2x/${file/.png/@2x.png}"
+  cp "${file}" "../../../Droid/Resources/drawable-xhdpi/${file}"
+  cp "${file}" "../../../iOS/Resources/Images/@2x/${file}"
 done
 cd ../..
 
 ###################################
 ###  3X
 ###################################
-sketchtool export slices Create_Match.sketch --output="export/3x" --scales="1.5"
+sketchtool export slices $1 --output="export/3x" --scales="1.5"
 cd export/3x
-mkdir -p ../android/xxhdpi
-mkdir -p ../iphone/@3x
+mkdir -p ../../../Droid/Resources/drawable-xxhdpi
+mkdir -p ../../../iOS/Resources/Images/@3x
 for file in *.png
 do
   mv "$file" "${file//@1.5x/}"
 done
 for file in *.png
 do
-  cp "${file}" "../android/xxhdpi/${file}"
-  cp "${file}" "../iphone/@3x/${file}"
+  cp "${file}" "../../../Droid/Resources/drawable-xxhdpi/${file}"
+  cp "${file}" "../../../iOS/Resources/Images/@3x/${file}"
 done
 cd ../..
 
 ###################################
 ###  4X
 ###################################
-sketchtool export slices Create_Match.sketch --output="export/4x" --scales="2"
+sketchtool export slices $1 --output="export/4x" --scales="2"
 cd export/4x
-mkdir -p ../android/xxxhdpi
+mkdir -p ../../../Droid/Resources/drawable-xxxhdpi
 for file in *.png
 do
   mv "$file" "${file//@2x/}"
 done
 for file in *.png
 do
-  cp "${file}" "../android/xxxhdpi/${file}"
+  cp "${file}" "../../../Droid/Resources/drawable-xxxhdpi/${file}"
 done
 cd ../..
 
