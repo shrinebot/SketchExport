@@ -46,7 +46,7 @@ mkdir -p ../../../Droid/Resources/drawable-xxhdpi
 mkdir -p ../../../iOS/Resources/Images/@3x
 for file in *.png
 do
-  mv "$file" "${file//@1.5x/}"
+  mv "$file" "${file//@1x/}"
 done
 for file in *.png
 do
